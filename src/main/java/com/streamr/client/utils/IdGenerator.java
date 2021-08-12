@@ -1,8 +1,7 @@
 package com.streamr.client.utils;
 
-import org.apache.commons.codec.binary.Base64;
-
 import java.nio.ByteBuffer;
+import java.util.Base64;
 import java.util.UUID;
 
 public class IdGenerator {
@@ -17,6 +16,6 @@ public class IdGenerator {
         bb.putLong(uuid.getMostSignificantBits());
         bb.putLong(uuid.getLeastSignificantBits());
 
-        return Base64.encodeBase64URLSafeString(bytes);
+        return Base64.getUrlEncoder().withoutPadding().encodeToString(bytes);
     }
 }
